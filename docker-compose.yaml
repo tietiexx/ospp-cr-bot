@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  ospp-cr-bot-go:
+    build: .
+    ports:
+      - '9090:9000'
+    volumes:
+      - /data/deploy/ospp-cr-bot/.env:/.env
+      - /data/deploy/ospp-cr-bot/common.yaml:/common.yaml
+    container_name: ospp-cr-bot
