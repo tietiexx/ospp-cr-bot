@@ -7,6 +7,8 @@ RUN apk update && apk add alpine-sdk git && rm -rf /var/cache/apk/*
 RUN mkdir -p /builder
 WORKDIR /builder
 
+ENV GOPROXY=https://goproxy.cn
+
 COPY go.mod .
 COPY go.sum .
 RUN go mod download
@@ -20,7 +22,7 @@ RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
 
 WORKDIR /
 COPY --from=builder /builder/server .
-COPY --from=builder /builder/common.yaml .
-COPY --from=builder /builder/.env .
 
 EXPOSE 9000
+
+CMD ["./server"]
