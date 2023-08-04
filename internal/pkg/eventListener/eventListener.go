@@ -12,6 +12,7 @@ import (
 	"net/url"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/lyleshaw/ospp-cr-bot/internal/pkg/pushChannel/lark"
@@ -83,7 +84,7 @@ func GitHubWebHook(c *gin.Context) {
 				"IssueTitle":         req.Issue.Title,
 				"Login":              req.Issue.User.Login,
 				"IssueNumber":        strconv.FormatInt(req.Issue.Number, 10),
-				"IssueContent":       req.Comment.Body,
+				"IssueContent":       strings.ReplaceAll(strings.ReplaceAll(req.Comment.Body, "\r", "\\r"), "\n", "\\n"),
 				"RequestedReviewers": "无",
 				"IssueURL":           req.Issue.HTMLURL,
 			})
@@ -101,7 +102,7 @@ func GitHubWebHook(c *gin.Context) {
 			"IssueTitle":         req.Issue.Title,
 			"Login":              req.Issue.User.Login,
 			"IssueNumber":        strconv.FormatInt(req.Issue.Number, 10),
-			"IssueContent":       req.Comment.Body,
+			"IssueContent":       strings.ReplaceAll(strings.ReplaceAll(req.Comment.Body, "\r", "\\r"), "\n", "\\n"),
 			"RequestedReviewers": requestedReviewers,
 			"IssueURL":           req.Issue.HTMLURL,
 		})
