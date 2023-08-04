@@ -64,30 +64,13 @@ const PrCommentMsg = `{
             "content": "**🔢 提醒人：**\n{{RequestedReviewers}}",
             "tag": "lark_md"
           }
-        },
-        {
-          "is_short": false,
-          "text": {
-            "content": "",
-            "tag": "lark_md"
-          }
-        },
-        {
-          "is_short": true,
-          "text": {
-            "content": "**📜 Comment 内容：**\n{{PRContent}}",
-            "tag": "lark_md"
-          }
-        },
-        {
-          "is_short": false,
-          "text": {
-            "content": "",
-            "tag": "lark_md"
-          }
         }
       ],
       "tag": "div"
+    },
+    {
+      "tag": "markdown",
+      "content": "**📜 Comment 内容：**\n{{PRContent}}"
     },
     {
       "tag": "hr"
