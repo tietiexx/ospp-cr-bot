@@ -152,6 +152,7 @@ func GitHubWebHook(c *gin.Context) {
 
 		receiveID, err := config.QueryReceiveIDByRepo(req.Repository.FullName)
 		if err != nil {
+			log.Infof("no found receiver: %s\n", req.Repository.FullName)
 			return
 		}
 
