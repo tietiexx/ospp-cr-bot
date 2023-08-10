@@ -174,7 +174,7 @@ func GitHubWebHook(c *gin.Context) {
 				"IssueTitle":         req.Issue.Title,
 				"Login":              req.Issue.User.Login,
 				"IssueNumber":        strconv.FormatInt(req.Issue.Number, 10),
-				"IssueContent":       strings.ReplaceAll(strings.ReplaceAll(req.Issue.Body, "\r", "\\r"), "\n", "\\n"),
+				"IssueContent":       req.Issue.HTMLURL,
 				"RequestedReviewers": "无",
 				"IssueURL":           req.Issue.HTMLURL,
 			})
@@ -193,7 +193,7 @@ func GitHubWebHook(c *gin.Context) {
 			"IssueTitle":         req.Issue.Title,
 			"Login":              req.Issue.User.Login,
 			"IssueNumber":        strconv.FormatInt(req.Issue.Number, 10),
-			"IssueContent":       strings.ReplaceAll(strings.ReplaceAll(req.Issue.Body, "\r", "\\r"), "\n", "\\n"),
+			"IssueContent":       req.Issue.HTMLURL,
 			"RequestedReviewers": assigneesToAt,
 			"IssueURL":           req.Issue.HTMLURL,
 		})
@@ -228,7 +228,7 @@ func GitHubWebHook(c *gin.Context) {
 				"PRTitle":            req.PullRequest.Title,
 				"Login":              req.PullRequest.User.Login,
 				"PRNumber":           strconv.FormatInt(req.PullRequest.Number, 10),
-				"PRContent":          strings.ReplaceAll(strings.ReplaceAll(req.PullRequest.Body, "\r", "\\r"), "\n", "\\n"),
+				"PRContent":          req.PullRequest.HTMLURL,
 				"RequestedReviewers": "无",
 				"PRURL":              req.PullRequest.HTMLURL,
 			})
@@ -247,7 +247,7 @@ func GitHubWebHook(c *gin.Context) {
 			"PRTitle":            req.PullRequest.Title,
 			"Login":              req.PullRequest.User.Login,
 			"PRNumber":           strconv.FormatInt(req.PullRequest.Number, 10),
-			"PRContent":          strings.ReplaceAll(strings.ReplaceAll(req.PullRequest.Body, "\r", "\\r"), "\n", "\\n"),
+			"PRContent":          req.PullRequest.HTMLURL,
 			"RequestedReviewers": assigneesToAt,
 			"PRURL":              req.PullRequest.HTMLURL,
 		})

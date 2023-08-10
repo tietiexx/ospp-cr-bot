@@ -70,7 +70,7 @@ const IssueMsg = `{
     },
     {
       "tag": "markdown",
-      "content": "**📜 Issue 内容：**\n{{IssueContent}}"
+      "content": "**📜 Issue 链接：**\n[]({{IssueContent}})"
     },
     {
       "tag": "hr"

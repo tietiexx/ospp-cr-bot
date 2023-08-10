@@ -1,7 +1,7 @@
 package messageTemplate
 
 const PrTitle1 = "您有一个 PullRequest 待处理!"
-const PrTitle2 = "%s 未处理 PullRequest!"
+const PrTitle2 = "未处理 PullRequest!"
 const PrMsg = `{
   "config": {
     "wide_screen_mode": true
@@ -70,7 +70,7 @@ const PrMsg = `{
     },
     {
       "tag": "markdown",
-      "content": "**📜 Issue 内容：**\n{{PRContent}}"
+      "content": "**📜 PR 链接：**\n[]({{PRContent}})"
     },
     {
       "tag": "hr"
