@@ -82,18 +82,6 @@ const PrCommentMsg = `{
           "tag": "button",
           "text": {
             "tag": "plain_text",
-            "content": "确认收到"
-          },
-          "type": "primary",
-          "value": {
-            "type": "pull_request_review_comment",
-            "numbers": "{{PRNumber}}"
-          }
-        },
-        {
-          "tag": "button",
-          "text": {
-            "tag": "plain_text",
             "content": "跟进 PR"
           },
           "url": "{{PRURL}}",

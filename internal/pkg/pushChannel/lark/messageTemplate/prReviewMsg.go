@@ -9,7 +9,7 @@ const PrReviewMsg = `{
   "header": {
     "template": "blue",
     "title": {
-      "content": "⏰ GitHub PullRequest Review 提醒",
+      "content": "⏰ LGTM 提醒",
       "tag": "plain_text"
     }
   },
@@ -78,18 +78,6 @@ const PrReviewMsg = `{
     {
       "tag": "action",
       "actions": [
-        {
-          "tag": "button",
-          "text": {
-            "tag": "plain_text",
-            "content": "确认收到"
-          },
-          "type": "primary",
-          "value": {
-            "type": "pull_request_review",
-            "numbers": "{{PRNumber}}"
-          }
-        },
         {
           "tag": "button",
           "text": {

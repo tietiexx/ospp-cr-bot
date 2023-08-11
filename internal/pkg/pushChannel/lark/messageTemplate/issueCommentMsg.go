@@ -82,18 +82,6 @@ const IssueCommentMsg = `{
           "tag": "button",
           "text": {
             "tag": "plain_text",
-            "content": "确认收到"
-          },
-          "type": "primary",
-          "value": {
-            "type": "issue_comment",
-            "numbers": "{{IssueNumber}}"
-          }
-        },
-        {
-          "tag": "button",
-          "text": {
-            "tag": "plain_text",
             "content": "跟进 Issue"
           },
           "url": "{{IssueURL}}",
