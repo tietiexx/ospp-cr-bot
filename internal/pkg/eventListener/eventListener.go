@@ -263,6 +263,10 @@ func GitHubWebHook(c *gin.Context) {
 			return
 		}
 
+		if !strings.Contains(req.Review.Body, "LGTM") {
+			log.Errorf("Message not contains LGTM error: %+v")
+		}
+
 		// 正则拿到提及人
 		var requestedReviewers string
 		atPeople := getAtPeopleFromComment(req.Review.Body)
@@ -281,7 +285,7 @@ func GitHubWebHook(c *gin.Context) {
 				"PRTitle":            req.PullRequest.Title,
 				"Login":              req.PullRequest.User.Login,
 				"PRNumber":           strconv.FormatInt(int64(req.PullRequest.Number), 10),
-				"PRContent":          req.PullRequest.Body, // TODO ?
+				"PRContent":          req.PullRequest.HTMLURL,
 				"RequestedReviewers": "无",
 				"PRURL":              req.PullRequest.HTMLURL,
 			})
@@ -299,7 +303,7 @@ func GitHubWebHook(c *gin.Context) {
 			"PRTitle":            req.PullRequest.Title,
 			"Login":              req.PullRequest.User.Login,
 			"PRNumber":           strconv.FormatInt(int64(req.PullRequest.Number), 10),
-			"PRContent":          strings.ReplaceAll(strings.ReplaceAll(req.Review.Body, "\r", "\\r"), "\n", "\\n"),
+			"PRContent":          req.PullRequest.HTMLURL,
 			"RequestedReviewers": requestedReviewers,
 			"PRURL":              req.PullRequest.HTMLURL,
 		})
@@ -368,7 +372,7 @@ func GitHubWebHook(c *gin.Context) {
 				"PRTitle":            req.PullRequest.Title,
 				"Login":              req.PullRequest.User.Login,
 				"PRNumber":           strconv.FormatInt(req.PullRequest.Number, 10),
-				"PRContent":          strings.ReplaceAll(strings.ReplaceAll(req.PullRequest.Body, "\r", "\\r"), "\n", "\\n"),
+				"PRContent":          req.PullRequest.HTMLURL,
 				"RequestedReviewers": "无",
 				"PRURL":              req.PullRequest.HTMLURL,
 			})
@@ -386,7 +390,7 @@ func GitHubWebHook(c *gin.Context) {
 			"PRTitle":            req.PullRequest.Title,
 			"Login":              req.PullRequest.User.Login,
 			"PRNumber":           strconv.FormatInt(req.PullRequest.Number, 10),
-			"PRContent":          strings.ReplaceAll(strings.ReplaceAll(req.Comment.Body, "\r", "\\r"), "\n", "\\n"),
+			"PRContent":          req.PullRequest.HTMLURL,
 			"RequestedReviewers": requestedReviewers,
 			"PRURL":              req.PullRequest.HTMLURL,
 		})

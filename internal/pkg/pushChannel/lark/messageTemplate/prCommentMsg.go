@@ -70,7 +70,7 @@ const PrCommentMsg = `{
     },
     {
       "tag": "markdown",
-      "content": "**📜 Comment 内容：**\n{{PRContent}}"
+      "content": "**📜 PR 链接：**\n[]({{PRContent}})"
     },
     {
       "tag": "hr"
