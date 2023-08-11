@@ -264,7 +264,8 @@ func GitHubWebHook(c *gin.Context) {
 		}
 
 		if !strings.Contains(req.Review.Body, "LGTM") {
-			log.Errorf("Message not contains LGTM error: %+v")
+			log.Errorf("Message not contains LGTM error")
+			return
 		}
 
 		// 正则拿到提及人
